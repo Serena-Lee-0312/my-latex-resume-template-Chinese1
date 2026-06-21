@@ -1,0 +1,15 @@
+# LaTeX 编译临时文件
+*.aux
+*.log
+*.out
+*.toc
+*.synctex.gz
+*.bbl
+*.blg
+*.fdb_latexmk
+*.fls
+
+# 系统文件
+.DS_Store
+Thumbs.db
+
