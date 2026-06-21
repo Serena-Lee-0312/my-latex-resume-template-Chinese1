@@ -101,7 +101,7 @@
 
 ## 📸 效果预览
 
-![Resume Preview](https://via.placeholder.com/600x800?text=Your+Resume+Preview)
+![Resume Preview](IIIT_Vadodara_Resume_Template.pdf)
 *(建议在上传后，将此处链接替换为你生成的简历截图)*
 
 ---
