@@ -1,0 +1,292 @@
+%-------------------------
+% Resume in Latex
+% Author
+% License : MIT
+%------------------------
+
+%---- Required Packages and Functions ----
+
+
+\documentclass[a4paper,12pt]{ctexart}%中文包
+\usepackage{fontspec}
+%\setmonofont{Courier New}   
+\setCJKsansfont{SimHei}
+\usepackage{latexsym}          % 加载LaTeX符号包，提供额外的数学符号
+\usepackage{fontawesome6}      % 引入最新的图标库，加载字体图标包，提供各种社交媒体图标
+%\usepackage{xcolor}            % 加载颜色包，支持使用各种颜色
+\usepackage{float}             % 加载浮动体包，更好地控制图片和表格位置
+\usepackage{ragged2e}          % 加载对齐包，提供两端对齐等文本对齐方式
+\usepackage[empty]{fullpage}   % 加载整页包，empty选项移除页眉页脚
+\usepackage{wrapfig}           % 加载图文混排包，实现文字环绕图片效果
+\usepackage{lipsum}            % 加载虚拟文本包，用于生成示例文本
+\usepackage{tabularx}          % 加载增强表格包，支持自动调整列宽
+\usepackage{titlesec}          % 加载标题格式包，自定义章节标题样式
+\usepackage{geometry}          % 加载页面几何包，设置页面边距等
+\usepackage{marvosym}          % 加载符号包，提供电话、邮箱等图标符号
+\usepackage{verbatim}          % 加载原文包，用于输出原始代码文本
+\usepackage{enumitem}          % 加载列表包，增强列表环境功能
+\usepackage[hidelinks]{hyperref} % 加载超链接包，hidelinks选项隐藏链接边框
+\usepackage{fancyhdr}          % 加载页眉页脚包，自定义页眉页脚样式
+\usepackage{multicol}          % 加载多栏排版包，实现多列文本布局
+\usepackage{graphicx}          % 加载图片包，支持插入外部图片文件
+%\usepackage{cfr-lm}            % 加载拉丁现代字体包，提供好看的字体
+\usepackage[T1]{fontenc}       % 加载字体编码包，T1编码支持西欧语言字符
+\setlength{\multicolsep}{0pt}  % 设置多栏间距为0点，消除栏间空白
+\pagestyle{fancy}              % 设置页面样式为fancy，使用自定义页眉页脚
+\fancyhf{}                     % 清除所有页眉和页脚字段，清空默认内容
+\fancyfoot{}                   % 清空页脚内容
+\renewcommand{\headrulewidth}{0pt} % 重定义页眉线宽度为0，隐藏页眉横线
+\renewcommand{\footrulewidth}{0pt} % 重定义页脚线宽度为0，隐藏页脚横线
+\geometry{left=1.4cm, top=0.8cm, right=1.2cm, bottom=1cm} % 设置页面边距：左边1.4厘米，上边0.8厘米，右边1.2厘米，下边1厘米
+% 调整边距（以下三行被注释掉了，不生效）
+%\addtolength{\oddsidemargin}{-0.5in}   % 奇数页左边距减少0.5英寸
+%\addtolength{\evensidemargin}{-0.5in}  % 偶数页左边距减少0.5英寸
+%\addtolength{\textwidth}{1in}          % 文本宽度增加1英寸
+\usepackage[most]{tcolorbox}   % 加载tcolorbox盒子包，most选项加载所有库，用于创建彩色文本框
+\tcbset{
+	frame code={},              % 框架代码为空，不绘制额外边框
+	center title,                % 标题居中显示
+	left=0pt,                    % 盒子左边距为0点
+	right=0pt,                   % 盒子右边距为0点
+	top=0pt,                     % 盒子顶部边距为0点
+	bottom=0pt,                  % 盒子底部边距为0点
+	colback=gray!20,             % 盒子背景色为20%灰色（浅灰）
+	colframe=white,              % 盒子边框颜色为白色（即无边框效果）
+	width=\dimexpr\textwidth\relax, % 盒子宽度等于文本宽度
+	enlarge left by=-2mm,        % 向左扩展2毫米，使盒子超出左边距
+	boxsep=4pt,                  % 盒子内容与边框的间距为4点
+	arc=0pt,outer arc=0pt,      % 盒子圆角弧度为0，即直角矩形
+}
+
+\urlstyle{same}                 % 设置URL链接样式与正文相同，不使用等宽字体
+
+\raggedright                    % 设置右对齐（实际为左对齐，文本右侧不齐）
+\setlength{\tabcolsep}{0in}     % 设置表格列间距为0英寸，使表格更紧凑
+% Sections formatting
+\titleformat{\section}{
+  \vspace{-4pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-7pt}]
+
+%-------------------------
+% Custom commands
+\newcommand{\resumeItem}[2]{%
+  \item{
+    \textbf{#1}{\hspace{0.5mm}#2 \vspace{-0.5mm}}
+  }
+}
+
+\newcommand{\resumePOR}[3]{%
+  \vspace{0.5mm}\item
+  \begin{tabularx}{0.97\textwidth}[t]{X r}
+    \textbf{#1}\hspace{0.3mm}#2 & \textit{\small{#3}}
+  \end{tabularx}
+  \vspace{-2mm}
+  \kaishu
+}
+
+\newcommand{\resumeSubheading}[4]{%
+  \vspace{0.5mm}\item
+  \begin{tabularx}{0.98\textwidth}[t]{@{}X r@{}}  
+    \textbf{#1} & \textit{\footnotesize{#4}} \\
+    \footnotesize #3 & \textit{\footnotesize #2} \\
+  \end{tabularx}
+  \vspace{-2.4mm}
+}
+
+\newcommand{\resumeProject}[3]{%
+    \vspace{-0.5mm}\item
+    \begin{tabularx}{0.98\textwidth}[t]{@{}X r@{}}
+        #1 & \textit{\footnotesize{#3}} \\[0.5pt]
+        \multicolumn{2}{@{}p{\linewidth}@{}}{%
+            \footnotesize{#2}%
+        } \\
+    \end{tabularx}
+    \vspace{-5mm}
+}
+
+\newcommand{\resumeSubItem}[2]{\resumeItem{#1}{#2}\vspace{-4pt}}
+
+% \renewcommand{\labelitemii}{$\circ$}
+\renewcommand{\labelitemi}{$\vcenter{\hbox{\tiny$\bullet$}}$}
+
+\newcommand{\resumeSubHeadingListStart}{%
+  \begin{itemize}[leftmargin=*,labelsep=0mm]%
+    \kaishu
+    %\itshape
+  }
+\newcommand{\resumeHeadingSkillStart}{\begin{itemize}[leftmargin=*,itemsep=1.7mm, rightmargin=2ex]}
+\newcommand{\resumeItemListStart}{               % 定义新命令
+  \begin{justify}                                % 开始两端对齐环境
+    \begin{itemize}[                              % 开始无序列表，带可选参数
+      leftmargin=3ex,      % 列表左缩进 3ex（相对于当前字体 x 高度）
+      rightmargin=2ex,     % 列表右缩进 2ex
+      noitemsep,           % 取消列表项之间的额外间距
+      labelsep=1.2mm,      % 标签（项目符号）与内容之间的间距 1.2mm
+      itemsep=0mm          % 列表项之间的垂直间距为 0（与 noitemsep 类似，再明确一下）
+    ]
+    \footnotesize
+    %\itshape %斜体
+    \kaishu %字体设置，楷书
+}
+
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}\vspace{2mm}}
+\newcommand{\resumeHeadingSkillEnd}{\end{itemize}\vspace{-2mm}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\end{justify}\vspace{-2mm}}
+\newcommand{\cvsection}[1]{%
+\vspace{2mm}
+\begin{tcolorbox}
+    \textbf{\large #1}
+\end{tcolorbox}
+    \vspace{-4mm}
+}
+
+\newcolumntype{L}{>{\raggedright\arraybackslash}X}%
+\newcolumntype{R}{>{\raggedleft\arraybackslash}X}%
+\newcolumntype{C}{>{\centering\arraybackslash}X}%
+%---- End of Packages and Functions ------
+
+
+%-------------------------------------------
+%%%%%%  CV STARTS HERE  %%%%%%%%%%%
+%%%%%% DEFINE ELEMENTS HERE %%%%%%%
+\newcommand{\name}{姓名} % Your Name
+%\newcommand：LaTeX 的核心命令，告诉系统“我要定义一个新命令”
+%{\name}：新命令的名字。这里定义了一个叫做 \name 的命令。使用时，你只需输入 \name，LaTeX 就会将其替换为后面的内容。
+\newcommand{\phone}{12345678910} % 电话号码Your Phone Number
+\newcommand{\emaila}{xxxxxx@163.com} %Email 邮箱
+\newcommand{\age}{{ \the\numexpr\year - 出生年月\relax}岁} 
+\newcommand{\address}{地址} 
+
+
+%%正文
+\begin{document}
+\fontfamily{ptm}\selectfont %切换英文字体 	Times
+
+%----------HEADING-----------------
+\noindent
+\raisebox{-0.25cm}{% 垂直偏移
+  \parbox{2.8cm}{% 名字
+    \textbf{\Huge \name}%
+  }%
+}% ← 这里必须有%，每个没有 % 的换行都会多出一个空格，几个加起来就可能超出 \textwidth 导致换行
+\hspace{0.4cm}% ← 间距
+\raisebox{-0.25cm}{% ← 信息也包在raisebox里
+  \parbox{\dimexpr \textwidth - 2.5cm - 0.3cm - 2.35cm - 0.5cm \relax}{%
+    \begin{tabular}{@{}l@{}}
+      {\raisebox{0.0\height}{\footnotesize \faLocationDot} \address \hspace{0.5cm} {\footnotesize \faCalendar} \age }\\
+      {\raisebox{0.0\height}{\footnotesize \faPhone} +86-\phone} \\
+      \href{mailto:\emaila}{\raisebox{0.0\height}{\footnotesize \faEnvelope}{\texttt{\emaila}}} \\
+      {\raisebox{0.0\height}求职意向：xxxx|xxxx|xxxx|xxxx}%
+    \end{tabular}%
+  }%
+}% 
+\hfill
+\raisebox{-0.25cm}{%
+  \parbox{2.35cm}{%
+    \raggedleft
+    \includegraphics[width=2.3cm,clip]{iiitv.png}%
+  }%
+}
+
+%-----------EDUCATION-----------
+\section{{\footnotesize \faGraduationCap} \textbf{教育背景}}
+  \resumeSubHeadingListStart % 开始教育/经历条目列表（自定义 itemize 环境）
+    \resumeSubheading
+      {xxxx大学 \,xx专业 \,全日制本科}{ }
+      {xx专业(分数),xx(88),xx(88),xx(88),\newline
+      }{202x.09-202x.06}
+    \resumeSubheading{二学历/辅修 (xx)}{}
+    {xx专业(分数),xx(88),xx(88),xx(88)}{202x.09-202x.06}
+  \resumeSubHeadingListEnd
+\vspace{-5.5mm}
+%
+%-----------学生工作-----------------
+\section{{\footnotesize \faSchool} \textbf{学生工作}}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {部门}{地址}
+      {职位}{时间}
+      \vspace{-2.0mm}
+      \resumeItemListStart
+    \item {工作内容}
+    \item {工作内容}
+      \resumeItemListEnd
+  \resumeSubHeadingListEnd
+\vspace{-8.5mm}
+
+
+%-----------PROJECTS-----------------
+\section{{\footnotesize \faFolderOpen} \textbf{项目经历}}
+\resumeSubHeadingListStart
+
+    \resumeProject
+      {项目名称} %Project Name
+      {项目内容} %Project Name, Location Name
+      {时间} %Event Dates
+
+      \resumeItemListStart
+        \item {专业技能：xxxxxxxx}
+        
+    \resumeItemListEnd
+    \vspace{-4mm}
+    
+
+  \resumeSubHeadingListEnd
+\vspace{-5.5mm}
+
+
+%-----------EXPERIENCE-----------------
+\section{{\footnotesize \faLaptopCode} \textbf{实习经历}}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {xx公司}{地址}
+      {职位}{时间}
+      \vspace{-2.0mm}
+      \resumeItemListStart
+    \item {工作内容}
+    \item {工作内容}
+    \resumeItemListEnd
+    
+    \vspace{-3.0mm}
+    
+
+  \resumeSubHeadingListEnd
+\vspace{-8.5mm}
+
+
+%-----------Technical skills-----------------
+\section{{\footnotesize \faChartLine} \textbf{工具技能}}
+ \begin{itemize}[leftmargin=0.05in, label={}]
+    \small\kaishu {\item{
+     \textbf{语言}{: 英语六级、xxxx} \\
+     \textbf{编程工具}{: xxxx} \\
+     \textbf{专业技能}{: EXCEL、ACCESS等office软件、xxxx} \\
+    }}
+ \end{itemize}
+ \vspace{-16pt}
+
+
+
+%-----------自我评价-----------------
+\section{{\footnotesize \faPerson} \textbf{自我评价}}
+\vspace{-0.4mm}
+\resumeSubHeadingListStart
+
+\resumePOR{ } 
+    {自我评价内容} 
+    { } 
+
+\resumePOR{ } 
+    {自我评价内容} 
+    { } 
+
+    
+
+\resumeSubHeadingListEnd
+
+\vspace{-5mm}
+\setlength{\footskip}{4.08003pt}
+
+
+%-------------------------------------------
+\end{document}
