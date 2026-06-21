@@ -78,6 +78,7 @@
 \newcommand{\phone}{12345678910}
 \newcommand{\emaila}{xxxxxx@163.com}
 \newcommand{\address}{地址}
+\newcommand{\github}{你的GitHub用户名}
 % ===== 替换结束 =====
 ```
 
