@@ -158,6 +158,7 @@
 \newcommand{\emaila}{xxxxxx@163.com} %Email 邮箱
 \newcommand{\age}{{ \the\numexpr\year - 出生年月\relax}岁} 
 \newcommand{\address}{地址} 
+\newcommand{\github}{你的GitHub用户名}
 
 
 %%正文
@@ -178,6 +179,7 @@
       {\raisebox{0.0\height}{\footnotesize \faLocationDot} \address \hspace{0.5cm} {\footnotesize \faCalendar} \age }\\
       {\raisebox{0.0\height}{\footnotesize \faPhone} +86-\phone} \\
       \href{mailto:\emaila}{\raisebox{0.0\height}{\footnotesize \faEnvelope}{\texttt{\emaila}}} \\
+	  \href{https://github.com/\github}{\raisebox{0.0\height}{\footnotesize \faGithub} \texttt{\github}} \\
       {\raisebox{0.0\height}求职意向：xxxx|xxxx|xxxx|xxxx}%
     \end{tabular}%
   }%
