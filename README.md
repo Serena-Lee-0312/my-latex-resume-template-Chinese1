@@ -50,9 +50,10 @@
    ```bash
    xelatex my-resume.tex
 
-   🔧 如何自定义
+
+🔧 如何自定义
 修改个人信息
-打开 my-resume.tex，找到以下部分并替换为你的真实信息：
+打开 LaTeX-code，找到以下部分并替换为你的真实信息：
 \newcommand{\name}{姓名}
 \newcommand{\phone}{12345678910}
 \newcommand{\emaila}{xxxxxx@163.com}
