@@ -46,9 +46,6 @@
    - 在 Overleaf 中，点击左上角“Menu”，将 Compiler 切换为 **XeLaTeX**。  
    - 在本地编辑器中（如 TeXstudio、VS Code），将编译命令设置为 `xelatex`。
 
-3. **一键编译**（命令行示例）  
-   ```bash
-   xelatex my-resume.tex
 
 
 🔧 如何自定义
