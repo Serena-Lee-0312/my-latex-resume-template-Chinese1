@@ -1,9 +1,7 @@
 %-------------------------
-% 原始模板来源：Overleaf
-% 原始模板名称：IIIT Vadodara Resume
-% 原始作者：Raj Shah
-% 原始许可证：Creative Commons CC BY 4.0
-% 本修改版本由 [Serena-Lee-0312] 维护，修改部分采用 MIT 许可证
+% Resume in Latex
+% Author
+% License : MIT
 %------------------------
 
 %---- Required Packages and Functions ----
@@ -20,7 +18,7 @@
 \usepackage{ragged2e}          % 加载对齐包，提供两端对齐等文本对齐方式
 \usepackage[empty]{fullpage}   % 加载整页包，empty选项移除页眉页脚
 \usepackage{wrapfig}           % 加载图文混排包，实现文字环绕图片效果
-\usepackage{lipsum}            % 加载虚拟文本包，用于生成示例文本
+%\usepackage{lipsum}            % 加载虚拟文本包，用于生成示例文本
 \usepackage{tabularx}          % 加载增强表格包，支持自动调整列宽
 \usepackage{titlesec}          % 加载标题格式包，自定义章节标题样式
 \usepackage{geometry}          % 加载页面几何包，设置页面边距等
@@ -69,78 +67,73 @@
   \vspace{-4pt}\scshape\raggedright\large
 }{}{0em}{}[\color{black}\titlerule \vspace{-7pt}]
 
+\usepackage{etoolbox}
+\pretocmd{\section}{\par\vspace{-7mm}}{}{}
+
 %-------------------------
 % Custom commands
-\newcommand{\resumeItem}[2]{%
-  \item{
-    \textbf{#1}{\hspace{0.5mm}#2 \vspace{-0.5mm}}
-  }
-}
 
-\newcommand{\resumePOR}[3]{%
+\newcommand{\profile}[3]{% 自我评价list
   \vspace{0.5mm}\item
   \begin{tabularx}{0.97\textwidth}[t]{X r}
     \textbf{#1}\hspace{0.3mm}#2 & \textit{\small{#3}}
   \end{tabularx}
-  \vspace{-2mm}
+  \vspace{-4mm}
   \kaishu
 }
 
-\newcommand{\resumeSubheading}[4]{%
-  \vspace{0.5mm}\item
-  \begin{tabularx}{0.98\textwidth}[t]{@{}X r@{}}  
-    \textbf{#1} & \textit{\footnotesize{#4}} \\
-    \footnotesize #3 & \textit{\footnotesize #2} \\
-  \end{tabularx}
-  \vspace{-2.4mm}
-}
+\newcommand{\subHeadingStart}{%
+  \begin{itemize}[leftmargin=*,labelsep=0mm]%
+    \kaishu
+  }
+\newcommand{\subHeadingEnd}{\end{itemize}}
 
-\newcommand{\resumeProject}[3]{%
-    \vspace{-0.5mm}\item
+\newcommand{\projectStart}{%
+  \begin{itemize}[leftmargin=*,labelsep=0mm]%
+    \kaishu
+    \vspace{5.9mm}
+  }
+\newcommand{\projectEnd}{\end{itemize}}
+
+\newcommand{\resumeProject}[3]{% 项目经历
+    \vspace{-5.9mm}
+    \item
     \begin{tabularx}{0.98\textwidth}[t]{@{}X r@{}}
-        #1 & \textit{\footnotesize{#3}} \\[0.5pt]
+        #1 & \textit{\footnotesize{#3}} \\   [-4pt]% 改成负值，向上拉近
         \multicolumn{2}{@{}p{\linewidth}@{}}{%
             \footnotesize{#2}%
         } \\
     \end{tabularx}
-    \vspace{-5mm}
 }
 
-\newcommand{\resumeSubItem}[2]{\resumeItem{#1}{#2}\vspace{-4pt}}
+\newcommand{\subHeading}[4]{%
+  \item
+  \begin{tabularx}{0.98\textwidth}[t]{@{}X r@{}}  
+    \textbf{#1} & \textit{\footnotesize{#4}} \\[-4pt]% 改成负值，向上拉近
+    \footnotesize #3 & \textit{\footnotesize #2} \\
+  \end{tabularx}
+}
 
-% \renewcommand{\labelitemii}{$\circ$}
+
+
+
 \renewcommand{\labelitemi}{$\vcenter{\hbox{\tiny$\bullet$}}$}
 
-\newcommand{\resumeSubHeadingListStart}{%
-  \begin{itemize}[leftmargin=*,labelsep=0mm]%
-    \kaishu
-    %\itshape
-  }
-\newcommand{\resumeHeadingSkillStart}{\begin{itemize}[leftmargin=*,itemsep=1.7mm, rightmargin=2ex]}
-\newcommand{\resumeItemListStart}{               % 定义新命令
+
+
+\newcommand{\itemStart}{               % 定义新命令
   \begin{justify}                                % 开始两端对齐环境
     \begin{itemize}[                              % 开始无序列表，带可选参数
       leftmargin=3ex,      % 列表左缩进 3ex（相对于当前字体 x 高度）
       rightmargin=2ex,     % 列表右缩进 2ex
       noitemsep,           % 取消列表项之间的额外间距
       labelsep=1.2mm,      % 标签（项目符号）与内容之间的间距 1.2mm
-      itemsep=0mm          % 列表项之间的垂直间距为 0（与 noitemsep 类似，再明确一下）
     ]
     \footnotesize
-    %\itshape %斜体
     \kaishu %字体设置，楷书
+    \vspace{-3.58mm}
 }
-
-\newcommand{\resumeSubHeadingListEnd}{\end{itemize}\vspace{2mm}}
-\newcommand{\resumeHeadingSkillEnd}{\end{itemize}\vspace{-2mm}}
-\newcommand{\resumeItemListEnd}{\end{itemize}\end{justify}\vspace{-2mm}}
-\newcommand{\cvsection}[1]{%
-\vspace{2mm}
-\begin{tcolorbox}
-    \textbf{\large #1}
-\end{tcolorbox}
-    \vspace{-4mm}
-}
+\newcommand{\itemEnd}{\end{itemize}\end{justify}}
 
 \newcolumntype{L}{>{\raggedright\arraybackslash}X}%
 \newcolumntype{R}{>{\raggedleft\arraybackslash}X}%
@@ -154,24 +147,24 @@
 \newcommand{\name}{姓名} % Your Name
 %\newcommand：LaTeX 的核心命令，告诉系统“我要定义一个新命令”
 %{\name}：新命令的名字。这里定义了一个叫做 \name 的命令。使用时，你只需输入 \name，LaTeX 就会将其替换为后面的内容。
-\newcommand{\phone}{12345678910} % 电话号码Your Phone Number
-\newcommand{\emaila}{xxxxxx@163.com} %Email 邮箱
-\newcommand{\age}{{ \the\numexpr\year - 出生年月\relax}岁} 
-\newcommand{\address}{地址} 
-\newcommand{\github}{你的GitHub用户名}
+\newcommand{\phone}{111-1111-1111} % Your Phone Number
+\newcommand{\emaila}{1111111111@163.com} %Email 
+\newcommand{\age}{{ \the\numexpr\year - 出生日期\relax}岁} 
+\newcommand{\address}{地点} 
+\newcommand{\github}{Serena-Lee-0312}
 
 
 %%正文
 \begin{document}
-\fontfamily{ptm}\selectfont %切换英文字体 	Times
+\fontfamily{ptm}\selectfont %切换英文字体 Times New Roman 风格的衬线字体
 
 %----------HEADING-----------------
-\noindent
-\raisebox{-0.25cm}{% 垂直偏移
-  \parbox{2.8cm}{% 名字
+\noindent %取消段落首行缩进
+
+  \parbox{2.8cm}{% 
     \textbf{\Huge \name}%
   }%
-}% ← 这里必须有%，每个没有 % 的换行都会多出一个空格，几个加起来就可能超出 \textwidth 导致换行
+% ← 这里必须有%，每个没有 % 的换行都会多出一个空格，几个加起来就可能超出 \textwidth 导致换行
 \hspace{0.4cm}% ← 间距
 \raisebox{-0.25cm}{% ← 信息也包在raisebox里
   \parbox{\dimexpr \textwidth - 2.5cm - 0.3cm - 2.35cm - 0.5cm \relax}{%
@@ -179,114 +172,156 @@
       {\raisebox{0.0\height}{\footnotesize \faLocationDot} \address \hspace{0.5cm} {\footnotesize \faCalendar} \age }\\
       {\raisebox{0.0\height}{\footnotesize \faPhone} +86-\phone} \\
       \href{mailto:\emaila}{\raisebox{0.0\height}{\footnotesize \faEnvelope}{\texttt{\emaila}}} \\
-	  \href{https://github.com/\github}{\raisebox{0.0\height}{\footnotesize \faGithub} \texttt{\github}} \\
-      {\raisebox{0.0\height}求职意向：xxxx|xxxx|xxxx|xxxx}%
+      \href{https://github.com/\github}{\raisebox{0.0\height}{\footnotesize \faGithub} \texttt{\github}} \\
+      {\raisebox{0.0\height}求职意向：xxx|xxx}%
     \end{tabular}%
   }%
 }% 
 \hfill
-\raisebox{-0.25cm}{%
   \parbox{2.35cm}{%
     \raggedleft
     \includegraphics[width=2.3cm,clip]{iiitv.png}%
   }%
-}
 
+\vspace{-5mm}
 %-----------EDUCATION-----------
 \section{{\footnotesize \faGraduationCap} \textbf{教育背景}}
-  \resumeSubHeadingListStart % 开始教育/经历条目列表（自定义 itemize 环境）
-    \resumeSubheading
-      {xxxx大学 \,xx专业 \,全日制本科}{ }
-      {xx专业(分数),xx(88),xx(88),xx(88),\newline
-      }{202x.09-202x.06}
-    \resumeSubheading{二学历/辅修 (xx)}{}
-    {xx专业(分数),xx(88),xx(88),xx(88)}{202x.09-202x.06}
-  \resumeSubHeadingListEnd
-\vspace{-5.5mm}
-%
+  \subHeadingStart % 开始教育/经历条目列表（自定义 itemize 环境）
+    \subHeading
+      {xxxx大学 \,专业 \,全日制本科}{ }
+      {科目1(分数),科目2(89),\newline
+      科目3(88)，\newline
+      科目4(90)}{20xx.09-20xx.06}
+      \vspace{-4mm}
+    \subHeading{二学历 (专业)}{}
+    {科目1(分数),科目2(分数)}{20xx.09-20xx.06}
+  \subHeadingEnd
+
+
 %-----------学生工作-----------------
 \section{{\footnotesize \faSchool} \textbf{学生工作}}
-  \resumeSubHeadingListStart
-    \resumeSubheading
-      {部门}{地址}
-      {职位}{时间}
-      \vspace{-2.0mm}
-      \resumeItemListStart
-    \item {工作内容}
-    \item {工作内容}
-      \resumeItemListEnd
-  \resumeSubHeadingListEnd
-\vspace{-8.5mm}
+  \subHeadingStart
+    \subHeading
+      {学生组织}{ }
+      {岗位}{2021.09-2022.06}
+      \itemStart
+    \item {职责}
+    \item {职责}
+      \itemEnd
+  \subHeadingEnd
+
 
 
 %-----------PROJECTS-----------------
 \section{{\footnotesize \faFolderOpen} \textbf{项目经历}}
-\resumeSubHeadingListStart
+\projectStart
 
     \resumeProject
-      {项目名称} %Project Name
-      {项目内容} %Project Name, Location Name
-      {时间} %Event Dates
-
-      \resumeItemListStart
-        \item {专业技能：xxxxxxxx}
+      {[毕业论文]xxxx} %Project Name
+      {简要介绍} %Project Name, Location Name
+      {20xx} %Event Dates
+      \itemStart
+        \item {专业技能：xxxx}
         
-    \resumeItemListEnd
-    \vspace{-4mm}
-    
+    \itemEnd
 
-  \resumeSubHeadingListEnd
-\vspace{-5.5mm}
+    
+    \resumeProject
+      {[国家级]比赛or项目|奖项} %Project Name
+      {简要内容} %Project Name, Location Name
+      {20xx.xx} %Event Dates
+
+      \itemStart
+        \item {简要介绍}
+        \item {简要介绍}
+    \itemEnd
+    
+    \resumeProject
+      {[省级]比赛or项目|奖项} %Project Name
+      {简要内容} %Project Name, Location Name
+      {20xx.xx-20xx.xx} %Event Dates
+
+      \itemStart
+      %  \item {专业技能：}
+      \vspace{-1mm}
+      \itemEnd
+
+    \resumeProject
+      {[校级]比赛or项目|奖项} %Project Name
+      {简要内容} %Project Name, Location Name
+      {20xx.xx} %Event Dates
+
+      \itemStart
+        \item {简要介绍}
+    \itemEnd
+
+    \resumeProject
+      {[课程作业]科目} %Project Name
+      {简要内容} %Project Name, Location Name
+      {20xx.xx} %Event Dates
+
+      \itemStart
+        \item {专业技能:}
+    \itemEnd
+
+  \projectEnd
 
 
 %-----------EXPERIENCE-----------------
 \section{{\footnotesize \faLaptopCode} \textbf{实习经历}}
-  \resumeSubHeadingListStart
-    \resumeSubheading
-      {xx公司}{地址}
-      {职位}{时间}
-      \vspace{-2.0mm}
-      \resumeItemListStart
-    \item {工作内容}
-    \item {工作内容}
-    \resumeItemListEnd
-    
-    \vspace{-3.0mm}
-    
+  \subHeadingStart
+    \subHeading
+      {xx公司}{地点}
+      {岗位}{20xx.xx - 20xx.xx}
+      \itemStart
+      \item {简要介绍}
+      \item {简要介绍}
+      \itemEnd
+    \vspace{-5.5mm}
+    \subHeading
+      {xx公司}{地点}
+      {岗位}{20xx.xx - 20xx.xx}
+      \itemStart
+      \item {简要介绍}
+      \item {简要介绍}
+      \itemEnd
+  \subHeadingEnd
 
-  \resumeSubHeadingListEnd
-\vspace{-8.5mm}
 
 
 %-----------Technical skills-----------------
 \section{{\footnotesize \faChartLine} \textbf{工具技能}}
  \begin{itemize}[leftmargin=0.05in, label={}]
     \small\kaishu {\item{
-     \textbf{语言}{: 英语六级、xxxx} \\
-     \textbf{编程工具}{: xxxx} \\
-     \textbf{专业技能}{: EXCEL、ACCESS等office软件、xxxx} \\
+     \textbf{语言}{: 英语四/六级、xx} \\
+     \textbf{编程工具}{: xx } \\
+     \textbf{专业技能}{: EXCEL、ACCESS等office软件、xx} \\
+     \textbf{分类}{: 具体工具技能} \\
     }}
  \end{itemize}
- \vspace{-16pt}
+ 
 
 
 
 %-----------自我评价-----------------
 \section{{\footnotesize \faPerson} \textbf{自我评价}}
 \vspace{-0.4mm}
-\resumeSubHeadingListStart
+\subHeadingStart
 
-\resumePOR{ } 
-    {自我评价内容} 
+\profile{ } 
+    {内容} 
     { } 
 
-\resumePOR{ } 
-    {自我评价内容} 
+\profile{ } 
+    {内容} 
     { } 
 
+\profile{ } 
+    {内容} 
+    { } 
     
 
-\resumeSubHeadingListEnd
+\subHeadingEnd
 
 \vspace{-5mm}
 \setlength{\footskip}{4.08003pt}
